@@ -1,0 +1,19 @@
+<figure class="fig fig-moon">
+  <svg viewBox="0 0 120 120" role="img"
+       aria-label="The moon on {{ moon.builtOn }}: {{ moon.name }}, {{ moon.percent }} percent lit.">
+    <defs>
+      <pattern id="moon-hatch" width="3.2" height="3.2" patternUnits="userSpaceOnUse"
+               patternTransform="rotate(38)">
+        <line x1="0" y1="0" x2="0" y2="3.2" stroke="currentColor" stroke-width="1.05"/>
+      </pattern>
+    </defs>
+    <circle class="moon-dark" cx="60" cy="60" r="52" fill="url(#moon-hatch)"/>
+    <path class="moon-lit" d="{{ moon.path }}"/>
+    <circle class="moon-limb" cx="60" cy="60" r="52"/>
+  </svg>
+  <figcaption>
+    Drawn here with the same model for {{ moon.builtOn }}, the day this page was
+    built: {{ moon.name | lower }}, {{ moon.percent }}% lit, {{ moon.ageDays }} days
+    past new. fpszero.com shows it live.
+  </figcaption>
+</figure>

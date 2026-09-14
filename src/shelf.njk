@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: categories.shelves
+  size: 1
+  alias: shelf
+  addAllPagesToCollections: true
+permalink: "/{{ shelf.slug }}/"
+eleventyComputed:
+  title: "{{ shelf.name }}"
+  description: "{{ shelf.gloss }}"
+---
+<div class="page-head">
+  <h1>{{ shelf.name }}</h1>
+  <p class="gloss">{{ shelf.gloss }}</p>
+</div>
+
+{% set volumes = collections[shelf.slug] %}
+
+{% if volumes | length %}
+  {% set posts = volumes %}
+  {% set stackShelf = shelf.slug %}
+  {% include "stack.njk" %}
+  <p class="stack-key">Thicker spine, longer piece. The number at the foot is the order I wrote it in.</p>
+
+  <ol class="volumes">
+    {%- for post in volumes %}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <span class="meta">
+        <span class="mark">{{ post.data.shelfMark }}</span>
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+        &middot; {{ post.data.words }} words
+        {%- if post.data.tags | length %} &middot; {{ post.data.tags | join(", ") }}{% endif %}
+      </span>
+    </li>
+    {%- endfor %}
+  </ol>
+{% else %}
+  <p>Nothing on this shelf yet.</p>
+{% endif %}
+
+{% set shelfTags = [] %}
+{%- for post in volumes %}
+  {%- for t in post.data.tags %}
+    {%- if t not in shelfTags %}{% set shelfTags = (shelfTags.push(t), shelfTags) %}{% endif %}
+  {%- endfor %}
+{%- endfor %}
+{% if shelfTags | length %}
+<h2 class="section stack-lg">Subjects</h2>
+{% include "pen-rule.njk" %}
+<ul class="tags">
+  {%- for t in shelfTags | sort %}
+  <li><a href="/tag/{{ t }}/">{{ t }}</a></li>
+  {%- endfor %}
+</ul>
+{% endif %}
+
+{% set orns = ["dilation", "wave", "horizon", "luminosity"] %}
+{% set ornament = orns[loop.index0 % 4] if loop else orns[0] %}
+{% include "ornament.njk" %}

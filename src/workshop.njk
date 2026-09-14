@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+permalink: /workshop/
+title: Workshop
+description: "Things Kashish Charaya (FPSZERO) has built: fpszero.com, Spectra, fpszero-lab, Svalekh and AEGIS."
+---
+<div class="page-head">
+  <h1>The Workshop</h1>
+</div>
+
+<div class="work-grid">
+  {%- for p in projects %}
+  <article class="work{% if not p.url %} wip{% endif %}">
+    {%- if p.host %}
+    <a class="host" href="{{ p.url }}" target="_blank" rel="noopener noreferrer external">{{ p.host }}</a>
+    {%- endif %}
+    <h3>{{ p.name }}</h3>
+    <p>{{ p.blurb }}</p>
+    {%- if p.stampLabels | length %}
+    <ul class="stamps" aria-label="Properties of {{ p.name }}">
+      {%- for st in p.stampLabels %}
+      <li class="stamp stamp-{{ st.key }}">{{ st.label }}</li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}<button class="work-open" type="button" popovertarget="dossier-{{ p.slug }}">
+      <span class="visually-hidden">Open the file on {{ p.name }}</span>
+    </button>
+    <span class="work-cue" aria-hidden="true">Open the file</span>
+  </article>
+  {%- endfor %}
+</div>
+
+{%- for p in projects %}
+{% include "dossier.njk" %}
+{%- endfor %}
+
+{% set ornament = "wave" %}{% include "ornament.njk" %}

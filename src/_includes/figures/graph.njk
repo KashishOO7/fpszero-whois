@@ -1,0 +1,21 @@
+<figure class="fig fig-graph">
+  <svg viewBox="0 0 {{ fpsgraph.width }} {{ fpsgraph.height }}" role="img"
+       aria-label="Five systems as nodes. {{ fpsgraph.edgeCount }} lines join the ones that sit close together.">
+    <g class="graph-lines">
+      {%- for l in fpsgraph.lines %}
+      <line x1="{{ l.x1 }}" y1="{{ l.y1 }}" x2="{{ l.x2 }}" y2="{{ l.y2 }}"/>
+      {%- endfor %}
+    </g>
+    {%- for p in fpsgraph.points %}
+    <g class="graph-node{% if p.pulsar %} is-pulsar{% endif %}">
+      {%- if p.pulsar %}
+      <circle class="pulse-ring" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ p.r + 6 }}"/>
+      <circle class="pulse-ring outer" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ p.r + 11 }}"/>
+      {%- endif %}
+      <circle class="node-core" cx="{{ p.x }}" cy="{{ p.y }}" r="{{ p.r }}" fill="{{ p.colour }}"/>
+      <text x="{{ p.x }}" y="{{ p.y - p.r - 14 }}" text-anchor="middle">{{ p.name }}</text>
+    </g>
+    {%- endfor %}
+  </svg>
+  <figcaption>The graph as fpszero.com draws it. Ringed nodes are the pulsars.</figcaption>
+</figure>

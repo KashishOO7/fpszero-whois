@@ -1,0 +1,23 @@
+{%- set s = posts | stackLayout(stackShelf) -%}
+<div class="stack-wrap">
+  <svg class="stack" viewBox="0 0 {{ s.width }} {{ s.height }}" aria-hidden="true"
+       preserveAspectRatio="xMinYMax meet">
+
+    {%- for b in s.books %}
+    <a href="{{ b.url }}" class="spine" tabindex="-1">
+      <title>{{ b.title }}</title>
+      <rect x="{{ b.x }}" y="{{ b.top }}" width="{{ b.width }}" height="{{ b.height }}"
+            rx="2" fill="{{ b.colour }}"/>
+      <rect class="band" x="{{ b.x }}" y="{{ b.bandTop }}" width="{{ b.width }}" height="3.5"/>
+      <rect class="band" x="{{ b.x }}" y="{{ b.bandLow }}" width="{{ b.width }}" height="3.5"/>
+      <text class="spine-title"
+            transform="translate({{ b.centreX }}, {{ b.centreY - 6 }}) rotate(-90)"
+            text-anchor="middle" dominant-baseline="central"
+            font-size="{{ b.fontSize }}">{{ b.label }}</text>
+      <text class="spine-mark" x="{{ b.centreX }}" y="{{ s.floor - 13 }}"
+            text-anchor="middle" font-size="13">{{ b.mark }}</text>
+    </a>
+    {%- endfor %}<rect class="board" x="0" y="{{ s.floor }}" width="{{ s.width }}" height="9" rx="1.5"/>
+    <rect class="board-edge" x="0" y="{{ s.floor + 9 }}" width="{{ s.width }}" height="4"/>
+  </svg>
+</div>

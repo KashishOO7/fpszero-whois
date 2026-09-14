@@ -1,0 +1,15 @@
+{%- set o = ornaments[ornament] -%}
+{%- if o %}
+<div class="ornament">
+  <svg viewBox="0 0 300 108" aria-hidden="true" fill="none" stroke="currentColor">
+    <path class="lines" d="{{ o.lines }}" stroke-width=".8" stroke-linecap="round"/>
+    <g class="stars" stroke="none" fill="currentColor">
+      {%- for s in o.stars %}
+      <circle cx="{{ s[0] }}" cy="{{ s[1] }}" r="{{ s[2] }}"/>
+      {%- endfor %}
+    </g>
+    <text class="eq" x="150" y="88" text-anchor="middle">{{ o.eq }}</text>
+    <text class="eq-note" x="150" y="102" text-anchor="middle">{{ o.note }}</text>
+  </svg>
+</div>
+{%- endif %}

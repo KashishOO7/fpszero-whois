@@ -1,0 +1,57 @@
+{%- set d = p.detail -%}
+<div id="dossier-{{ p.slug }}" popover class="dossier" role="dialog"
+     aria-labelledby="dossier-{{ p.slug }}-title">
+  <div class="dossier-sheet">
+    <button class="dossier-close" type="button"
+            popovertarget="dossier-{{ p.slug }}" popovertargetaction="hide">
+      Close<span class="visually-hidden"> the {{ p.name }} file</span>
+    </button>
+
+    <p class="dossier-kicker">{{ d.kicker }}</p>
+    <h2 id="dossier-{{ p.slug }}-title" class="dossier-title">{{ p.name }}</h2>
+
+    {%- if p.stampLabels | length %}
+    <ul class="stamps">
+      {%- for st in p.stampLabels %}
+      <li class="stamp stamp-{{ st.key }}">{{ st.label }}</li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+
+    <p class="dossier-lede">{{ d.lede }}</p>
+
+    {%- for s in d.sections %}
+    <div class="dossier-section{% if s.figure %} has-figure fig-{{ s.figure }}-section{% endif %}">
+      <h3>{{ s.heading }}</h3>
+      {%- if s.figure == "moon" %}{% include "figures/moon.njk" %}
+      {%- elif s.figure == "graph" %}{% include "figures/graph.njk" %}
+      {%- elif s.figure == "terminal" %}{% include "figures/terminal.njk" %}
+      {%- endif %}
+      <div class="dossier-body">
+        {%- for para in s.body %}
+        <p>{{ para }}</p>
+        {%- endfor %}
+        {%- if s.list %}
+        <ul class="cmds" aria-label="Commands">
+          {%- for c in s.list %}<li><code>{{ c }}</code></li>{% endfor %}
+        </ul>
+        {%- endif %}
+      </div>
+    </div>
+    {%- endfor %}
+
+    {%- if d.facts | length %}
+    <ul class="dossier-facts">
+      {%- for f in d.facts %}<li>{{ f }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
+
+    {%- if d.links | length %}
+    <p class="dossier-links">
+      {%- for l in d.links %}
+      <a href="{{ l.url }}" target="_blank" rel="noopener noreferrer external">{{ l.label }}</a>
+      {%- endfor %}
+    </p>
+    {%- endif %}
+  </div>
+</div>

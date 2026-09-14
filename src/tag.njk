@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+  addAllPagesToCollections: true
+permalink: "/tag/{{ tag }}/"
+eleventyComputed:
+  title: "{{ tag }}"
+  description: "Everything tagged {{ tag }}, across every shelf."
+---
+<div class="page-head">
+  <h1>{{ tag }}</h1>
+  <p class="gloss">Everything tagged {{ tag }}, across every shelf.</p>
+</div>
+
+<ol class="volumes">
+  {%- for post in collections[tag] %}
+  {%- if post.data.shelves %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="meta">
+      <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+      &middot; {{ post.data.primaryShelf }}
+    </span>
+  </li>
+  {%- endif %}
+  {%- endfor %}
+</ol>
+
+<p class="stack-md"><a href="/catalogue/">All volumes &rarr;</a></p>

@@ -1,0 +1,72 @@
+{
+  "shelves": [
+    {
+      "slug": "security",
+      "name": "Security",
+      "code": "SEC",
+      "gloss": "Where systems break, and how to build them: threat models, privacy, and the adversary's view.",
+      "book": {
+        "label": "Security",
+        "colour": "#6B4B2A"
+      },
+      "palette": [
+        "#6B4B2A",
+        "#1F5158",
+        "#7C3A24",
+        "#4A5233",
+        "#3E3A55"
+      ]
+    },
+    {
+      "slug": "science",
+      "name": "Science",
+      "code": "SCI",
+      "gloss": "Where physics meets the one doing the measuring.",
+      "book": {
+        "label": "Science",
+        "colour": "#2C3E63"
+      },
+      "palette": [
+        "#2C3E63",
+        "#3E3A55",
+        "#1F5158",
+        "#54407A",
+        "#2F5347"
+      ]
+    },
+    {
+      "slug": "philosophy",
+      "name": "Philosophy",
+      "code": "PHI",
+      "gloss": "The questions that stay after the answers run out.",
+      "book": {
+        "label": "Philosophy",
+        "colour": "#7C3A24"
+      },
+      "palette": [
+        "#7C3A24",
+        "#6B2F3E",
+        "#4A5233",
+        "#8A6A24",
+        "#5A3550"
+      ]
+    },
+    {
+      "slug": "miscellaneous",
+      "name": "Miscellaneous",
+      "code": "MSC",
+      "gloss": "Notes, journals, and thinking out loud.",
+      "book": {
+        "label": "Miscellany",
+        "colour": "#4A5233"
+      },
+      "palette": [
+        "#5F553F",
+        "#7A5C2E",
+        "#4F4A44",
+        "#6B4B2A",
+        "#8A6A24"
+      ]
+    }
+  ]
+}

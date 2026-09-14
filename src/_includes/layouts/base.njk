@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; script-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'">
+    <title>{% if title %}{{ title }} · {{ site.name }}{% else %}{{ site.author }}{% endif %}</title>
+    {% if description %}<meta name="description" content="{{ description }}">{% endif %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="preload" href="/fonts/im-fell-english-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/site.css">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.author }}">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="shell">
+      <header>
+        <div class="masthead">
+          <a class="seal" href="/"><span class="glyph">&#8709;</span> {{ site.brand }}</a>
+          <nav aria-label="Sections">
+            <ul>
+              <li><a href="/shelves/"{% if page.url == "/shelves/" %} aria-current="page"{% endif %}>Shelves</a></li>
+              <li><a href="/workshop/"{% if page.url == "/workshop/" %} aria-current="page"{% endif %}>Workshop</a></li>
+              <li><a href="/catalogue/"{% if page.url == "/catalogue/" %} aria-current="page"{% endif %}>Catalogue</a></li>
+              <li><a href="/contact/"{% if page.url == "/contact/" %} aria-current="page"{% endif %}>Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <svg class="head-rule" viewBox="0 0 1000 9" preserveAspectRatio="none" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M0 2.4 C 180 1.5, 420 3.2, 1000 2.1"/>
+          <path d="M0 6.6 C 260 7.4, 540 5.6, 1000 6.9"/>
+        </svg>
+      </header>
+
+      <main id="main">
+        {{ content | safe }}
+      </main>
+
+      <footer>
+        <span>{{ site.author }}</span>
+        <span>Writing &copy; {{ site.name }}, all rights reserved &middot; Code MIT</span>
+      </footer>
+    </div>
+  </body>
+</html>

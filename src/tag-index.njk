@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+permalink: /tag/
+title: Subjects
+description: "Every subject in the archive, with how many pieces carry it."
+---
+<div class="page-head">
+  <h1>Subjects</h1>
+  <p class="gloss">A subject can run across more than one shelf. This is every
+     one of them, with how many pieces carry it.</p>
+</div>
+
+<ul class="subject-index">
+  {%- for t in collections.tagList %}
+  <li>
+    <a href="/tag/{{ t }}/">{{ t }}</a>
+    <span class="n">{{ collections[t] | length }}</span>
+  </li>
+  {%- endfor %}
+</ul>
+
+{% set ornament = "dilation" %}{% include "ornament.njk" %}

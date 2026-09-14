@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+permalink: /catalogue/
+title: Catalogue
+description: "The accession register: every volume in the archive with its shelf mark, shelf, date, length and subjects. One page, no pagination."
+---
+<div class="page-head">
+  <h1>The Catalogue</h1>
+  <p class="gloss">Everything I have written, newest first, on one page.</p>
+</div>
+
+<div class="ledger-wrap">
+  <table class="ledger">
+    <caption class="visually-hidden">
+      Everything written, newest first, with number, title, shelf, date, length and subjects.
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" class="col-mark">Mark</th>
+        <th scope="col" class="col-title">Title</th>
+        <th scope="col" class="col-shelf">Shelves</th>
+        <th scope="col" class="col-date">First published</th>
+        <th scope="col" class="col-words">Words</th>
+        <th scope="col" class="col-subj">Subjects</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for post in collections.articles %}
+      <tr>
+        <td class="col-mark"><span class="acc">{{ post.data.accession }}</span></td>
+        <th scope="row" class="col-title"><a href="{{ post.url }}">{{ post.data.title }}</a></th>
+        <td class="col-shelf">
+          {%- for sh in post.data.shelves %}<a href="/{{ sh }}/">{{ sh }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+        </td>
+        <td class="col-date">
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+        </td>
+        <td class="col-words">{{ post.data.words }}</td>
+        <td class="col-subj">
+          {%- for t in post.data.tags %}<a href="/tag/{{ t }}/">{{ t }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+        </td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+
+<p class="stack-key">{{ collections.articles | length }} pieces. The number on the left is the order I wrote them in, so it counts down the page. It never changes.</p>
+
+<h2 class="section stack-lg">Subjects</h2>
+{% include "pen-rule.njk" %}
+<ul class="tags">
+  {%- for t in collections.tagList %}
+  <li><a href="/tag/{{ t }}/">{{ t }}</a></li>
+  {%- endfor %}
+</ul>
+
+{% set ornament = "rocket" %}{% include "ornament.njk" %}

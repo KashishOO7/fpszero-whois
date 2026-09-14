@@ -1,0 +1,29 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang }}">
+  <title>{{ site.author }}</title>
+  <subtitle>Writing on security, science, philosophy, and everything else.</subtitle>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/"/>
+  <id>{{ site.url }}/</id>
+  {%- set latest = collections.articles | first %}
+  <updated>{{ latest.date.toISOString() if latest else "1970-01-01T00:00:00.000Z" }}</updated>
+  <author><name>{{ site.author }}</name></author>
+  <rights>© {{ site.name }}. All rights reserved.</rights>
+{%- for post in collections.articles %}
+  <entry>
+    <title>{{ post.data.title | escape }}</title>
+    <link href="{{ site.url }}{{ post.url }}"/>
+    <id>{{ site.url }}{{ post.url }}</id>
+    <published>{{ post.date.toISOString() }}</published>
+    <updated>{{ post.date.toISOString() }}</updated>
+    {%- for sh in post.data.shelves %}
+    <category term="{{ sh }}"/>
+    {%- endfor %}
+    <content type="html"><![CDATA[{{ post.content | replace("]]>", "]]]]><![CDATA[>") | safe }}]]></content>
+  </entry>
+{%- endfor %}
+</feed>

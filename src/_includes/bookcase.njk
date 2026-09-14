@@ -1,0 +1,24 @@
+<svg class="bookcase" viewBox="0 0 {{ bookcase.case.width }} {{ bookcase.height }}"
+     role="group" aria-label="Bookcase: the shelves of this library">
+
+  <g class="case">
+    <rect x="6" y="8" width="{{ bookcase.case.width - 12 }}" height="{{ bookcase.case.frame }}" rx="1.5"/>
+    <rect x="6" y="8" width="{{ bookcase.case.frame }}" height="{{ bookcase.height - 12 }}" rx="1.5"/>
+    <rect x="{{ bookcase.case.width - 17 }}" y="8" width="{{ bookcase.case.frame }}" height="{{ bookcase.height - 12 }}" rx="1.5"/>
+    {%- for shelf in bookcase.case.shelves %}
+    <rect x="6" y="{{ shelf.base }}" width="{{ bookcase.case.width - 12 }}" height="9" rx="1.5"/>
+    {%- endfor %}
+  </g>
+
+  {%- for b in bookcase.books %}
+  <a href="{{ b.url }}" class="book" aria-label="{{ b.label }}">
+    <rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.width }}" height="{{ b.height }}" rx="2"
+          fill="{{ b.colour }}"/>
+    <rect class="band" x="{{ b.x }}" y="{{ b.bandTop }}" width="{{ b.width }}" height="4"/>
+    <rect class="band" x="{{ b.x }}" y="{{ b.bandLow }}" width="{{ b.width }}" height="4"/>
+    <text transform="translate({{ b.centreX }}, {{ b.centreY }}) rotate(-90)"
+          text-anchor="middle" dominant-baseline="central"
+          font-size="{{ b.fontSize }}">{{ b.label }}</text>
+  </a>
+  {%- endfor %}
+</svg>
