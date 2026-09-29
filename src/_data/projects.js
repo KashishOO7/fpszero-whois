@@ -71,38 +71,66 @@ const projects = [
     name: "Spectra",
     host: "spectra.fpszero.com",
     url: "https://spectra.fpszero.com",
-    stamps: ["open-source", "no-account", "offline"],
+    stamps: ["open-source", "no-account", "in-browser"],
     blurb:
-      "Plain, sourced steps for your accounts, devices, location and the scams " +
-      "aimed at you. You do not need a problem to start.",
+      "A free safety checklist for your accounts, devices, location and the " +
+      "people who might come after them. Say what worries you and 45 steps " +
+      "reorder around it.",
     detail: {
       kicker: "A free safety checklist, online and offline",
       lede:
-        "Plain, sourced steps for your accounts, devices, location and the scams " +
-        "aimed at you. You do not need a problem to start. If you already have " +
-        "one, this still works.",
+        "Most security advice is a hundred-item wall. Spectra asks what you are " +
+        "worried about, then hands you a short list, one step at a time, each " +
+        "with a primary source.",
       sections: [
         {
-          heading: "What it builds for you",
+          heading: "What you say changes what comes first",
           body: [
-            "Say what worries you and it orders 38 steps around your situation, no " +
-              "account needed. It keeps a timeline of what you have done, maps who " +
-              "you are guarding against, and has step-by-step help for when " +
-              "something has already happened.",
+            "Tapping the harms, or answering five yes-or-no questions, is all the " +
+              "setup there is, and everything works for someone who taps nothing " +
+              "at all.",
+            "The reordering is measured rather than asserted. Of the 22 single " +
+              "answers a reader can give, 16 change the first step, and 8 " +
+              "different steps come first.",
+            "Underneath sit four layers: who you are, the 10 things that can " +
+              "happen, the 17 ways they happen, and the 45 steps you can take.",
           ],
         },
         {
-          heading: "Yours, on every device",
+          heading: "Say it in your own words",
           body: [
-            "Everything stays in your browser. Move your list to another phone or " +
-              "laptop with a QR code, export it as a file, or print it on paper.",
+            "Type what is happening, in a plain sentence, and the step that covers " +
+              "it comes first. Below its threshold Spectra says it does not cover " +
+              "that, and stops, rather than handing you the nearest thing on the " +
+              "shelf. No model, no download, nothing generated.",
+            "For a reader already in trouble there are five incident paths, " +
+              "reachable from every page, because that reader cannot start with a " +
+              "checklist.",
+          ],
+        },
+        {
+          heading: "Yours, and it stays yours",
+          body: [
+            "Your answers live in IndexedDB on your own device. The page ships " +
+              "connect-src 'self', so the browser itself forbids the app from " +
+              "contacting anything else.",
+            "Your setup travels as seven characters, or as a link or QR code. All " +
+              "of them ride in the URL fragment, which browsers never transmit, so " +
+              "nothing reaches a server. The code is a fixed width, so its length " +
+              "cannot leak how far through the list you are, and it carries a " +
+              "checksum, so a mis-heard character is refused rather than quietly " +
+              "loading someone else's setup.",
+            "A timeline keeps what you finished and when, and /playbook turns the " +
+              "list into paper with tick boxes through the browser's own Save as " +
+              "PDF, with no PDF library to download.",
           ],
         },
       ],
       facts: [
-        "Every step cites its source",
-        "Hard words explained on tap",
-        "SvelteKit, AGPL-3.0, CC BY-SA 4.0",
+        "45 steps, 10 harms, 17 attack vectors",
+        "26 validators: every step carries a primary source",
+        "SvelteKit 2, a static app on GitHub Pages",
+        "Code AGPL-3.0-only, content CC BY-SA 4.0",
       ],
       links: [
         { label: "Open Spectra", url: "https://spectra.fpszero.com" },
