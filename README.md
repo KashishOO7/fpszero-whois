@@ -1,6 +1,6 @@
 # whois.fpszero.com
 
-The personal site of Kashish Charaya (FPSZER∅): writer, physicist and cyber security expert.
+The personal site of Kashish Charaya (FPSZER∅): writer, physicist and cyber security researcher.
 
 **Live:** [whois.fpszero.com](https://whois.fpszero.com)
 
