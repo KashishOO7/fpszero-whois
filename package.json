@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
-  "description": "Personal identity and writing-archive site for Kashish Charaya (FPSZERO).",
+  "description": "Personal site of Kashish Charaya (FPSZER∅): writing, projects and contact.",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
     "prebuild": "node -e \"require('fs').rmSync('_site',{recursive:true,force:true})\""
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
-    "@fontsource/im-fell-english": "5.3.0"
+    "@11ty/eleventy": "^3.1.6"
   }
 }
