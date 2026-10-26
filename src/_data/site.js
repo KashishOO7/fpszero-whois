@@ -1,8 +1,8 @@
-module.exports = {
-  author: "Kashish Charaya (FPSZERO)",
+const site = {
+  author: "Kashish Charaya (FPSZER∅)",
   name: "Kashish Charaya",
   brand: "FPSZERO",
-  role: "Security researcher. India.",
+  role: "Writer, physicist and cyber security expert. India.",
   domain: "whois.fpszero.com",
   url: "https://whois.fpszero.com",
   email: "kashish@fpszero.com",
@@ -22,3 +22,7 @@ module.exports = {
     { label: "fpszero.com", url: "https://fpszero.com" },
   ],
 };
+
+site.elsewhere = site.profiles.filter((p) => p.url !== "https://fpszero.com");
+
+module.exports = site;

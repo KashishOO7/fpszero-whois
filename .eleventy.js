@@ -1,5 +1,10 @@
 const fs = require("node:fs");
 const categories = require("./src/_data/categories.js");
+const library = require("./src/_data/library.json");
+const site = require("./src/_data/site.js");
+const about = require("./src/_data/about.js");
+const projects = require("./src/_data/projects.js");
+const photos = require("./src/_data/photos.js");
 
 const ARTICLE_GLOB = "src/content/articles/*.md";
 
@@ -13,7 +18,6 @@ function wordCount(inputPath) {
   return wordCache.get(inputPath);
 }
 
-const library = require("./src/_data/library.json");
 const SHELF_CODE = Object.fromEntries(library.shelves.map((s) => [s.slug, s.code]));
 
 function shelvesOf(item) {
@@ -29,14 +33,15 @@ function shelfMark(item, accession) {
   return `FPS · ${code} · ${ym} · ${String(accession).padStart(2, "0")}`;
 }
 
+const SHORT = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ public: "/" });
-
-  const FELL = "node_modules/@fontsource/im-fell-english/files/im-fell-english-latin-400";
-  eleventyConfig.addPassthroughCopy({
-    [`${FELL}-normal.woff2`]: "fonts/im-fell-english-400.woff2",
-    [`${FELL}-italic.woff2`]: "fonts/im-fell-english-400-italic.woff2",
-  });
 
   eleventyConfig.addFilter("isoDate", (d) => d.toISOString().slice(0, 10));
   eleventyConfig.addFilter("readableDate", (d) =>
@@ -53,67 +58,65 @@ module.exports = function (eleventyConfig) {
     [/fpszero\.substack\.com/, "A Principia"],
     [/medium\.com/, "Medium"],
   ];
-  eleventyConfig.addFilter("originLabel", (url, source) => {
+  const originLabel = (url, source) => {
     for (const [pattern, name] of PUBLICATIONS) {
       if (pattern.test(url || "")) return name;
     }
     return source ? source[0].toUpperCase() + source.slice(1) : "elsewhere";
-  });
+  };
+  eleventyConfig.addFilter("originLabel", originLabel);
 
-  const SPINE_PALETTE = Object.fromEntries(library.shelves.map((s) => [s.slug, s.palette]));
+  const escapeHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  eleventyConfig.addFilter("inlineLinks", (s) =>
+    escapeHtml(s).replace(
+      /\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer external">$1</a>'
+    )
+  );
 
-  const SHELF_CAP = 10;
-
-  eleventyConfig.addFilter("stackLayout", function (posts, shelfSlug) {
-    const GAP = 5;
-    const PAD = 22;
-    const FLOOR = 340;
-    const TYPE = 15;
-    const CHAR = 7.6;
-    const wobble = [1, 0.93, 0.98, 0.89, 0.96, 0.91, 1, 0.94];
-
-    const shown = posts.slice(0, SHELF_CAP);
-    let x = PAD;
-    const books = shown.map((post, i) => {
-      const words = post.data.words || 400;
-      const width = Math.round(Math.min(78, Math.max(34, 32 + words / 34)));
-      const height = Math.round(Math.min(300, 300 * wobble[i % wobble.length]));
-      const top = FLOOR - height;
-
-      const room = Math.floor((height - 64) / CHAR);
-      const title = post.data.title || "";
-      const label = title.length > room ? title.slice(0, Math.max(4, room - 1)).trimEnd() + "…" : title;
-
-      const palette =
-        SPINE_PALETTE[shelfSlug] ||
-        SPINE_PALETTE[post.data.primaryShelf] ||
-        library.shelves[library.shelves.length - 1].palette;
-      const book = {
-        url: post.url,
-        title,
-        label,
-        words,
-        mark: (post.data.shelfMark || "").split(" ").slice(-1)[0],
-        colour: palette[i % palette.length],
-        x, width, height, top,
-        centreX: x + width / 2,
-        centreY: top + height / 2,
-        bandTop: top + 22,
-        bandLow: FLOOR - 34,
-        fontSize: TYPE,
-      };
-      x += width + GAP;
-      return book;
-    });
-
-    return {
-      books,
-      width: x + PAD,
-      height: FLOOR + 30,
-      floor: FLOOR,
-      shown: shown.length,
-      total: posts.length,
+  eleventyConfig.addFilter("osBundle", (articles) => {
+    const bundle = {
+      site: {
+        name: site.name,
+        author: site.author,
+        brand: site.brand,
+        domain: site.domain,
+        url: site.url,
+        email: site.email,
+        role: site.role,
+        profiles: site.profiles,
+      },
+      about,
+      shelves: library.shelves.map(({ slug, name, code, gloss }) => ({ slug, name, code, gloss })),
+      articles: articles.map((a) => ({
+        slug: a.page.fileSlug,
+        url: a.url,
+        title: a.data.title,
+        date: a.date.toISOString().slice(0, 10),
+        label: SHORT.format(a.date),
+        shelves: a.data.shelves,
+        tags: a.data.tags || [],
+        words: a.data.words,
+        source: a.data.source && a.data.source !== "original" ? originLabel(a.data.source_url, a.data.source) : "",
+        sourceUrl: a.data.source && a.data.source !== "original" ? a.data.source_url || "" : "",
+        description: a.data.description,
+        mark: a.data.shelfMark,
+      })),
+      projects: projects.map((p) => ({
+        slug: p.slug,
+        name: p.name,
+        url: p.url,
+        blurb: p.blurb,
+        stamps: p.stampLabels.map((s) => s.label),
+        kicker: p.detail.kicker,
+        lede: p.detail.lede,
+        sections: p.detail.sections.map((s) => ({ heading: s.heading, body: s.body, list: s.list || [] })),
+        facts: p.detail.facts,
+        links: p.detail.links,
+      })),
+      photos,
     };
+    return JSON.stringify(bundle).replace(/</g, "\\u003c");
   });
 
   const allArticles = (api) =>
@@ -147,25 +150,6 @@ module.exports = function (eleventyConfig) {
 
     return shelved;
   });
-
-  eleventyConfig.addCollection("unshelved", (api) =>
-    allArticles(api).filter((item) => !shelvesOf(item).length)
-  );
-
-  eleventyConfig.addCollection("tagList", (api) => {
-    const tags = new Set();
-    for (const item of allArticles(api)) {
-      if (!shelvesOf(item).length) continue;
-      for (const tag of item.data.tags || []) tags.add(tag);
-    }
-    return [...tags].sort();
-  });
-
-  for (const category of categories.all) {
-    eleventyConfig.addCollection(category, (api) =>
-      allArticles(api).filter((item) => shelvesOf(item).includes(category))
-    );
-  }
 
   return {
     dir: {

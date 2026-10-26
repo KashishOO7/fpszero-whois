@@ -1,45 +1,80 @@
 ---
 layout: layouts/base.njk
 permalink: /
-description: "Kashish Charaya (FPSZERO), security researcher. Writing on security, science, philosophy, and the projects built from first principles."
+description: "Kashish Charaya (FPSZER∅): writer, physicist and cyber security expert. Writing on security, science and philosophy, and the projects built from first principles."
 ---
-<section class="desk" aria-labelledby="who">
- <div class="desk-layout">
-  <div>
-  <h1 id="who">{{ site.name }}</h1>
+<h1 class="sr">{{ site.name }}</h1>
+
+<div id="shell">
+  <div id="wall" aria-hidden="true"></div>
+
+  <div id="menubar">
+    <button class="mb" id="logo" type="button" aria-label="{{ site.brand }} menu" aria-haspopup="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M6.8 17.2 17.2 6.8"/></svg>
+    </button>
+    <span class="mb b hide-m">{{ site.brand }}</span>
+    <span class="mb" id="appname"></span>
+    <span class="grow"></span>
+    <button class="mb" id="b-net" type="button" aria-label="Network and privacy" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0" id="w3"/><path d="M5.5 12.6a9.5 9.5 0 0 1 13 0" id="w2"/><path d="M8.6 16.2a5 5 0 0 1 6.8 0" id="w1"/><circle cx="12" cy="19.6" r="1.3" fill="currentColor" stroke="none"/></svg>
+    </button>
+    <button class="mb" id="b-bat" type="button" aria-label="Battery" hidden>
+      <span class="lbl hide-m" id="bat-t"></span>
+      <svg class="bat" viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="6" width="21" height="12" rx="3.5"/><path d="M25 10v4" stroke-linecap="round"/><rect id="bat-f" x="4" y="8" width="17" height="8" rx="1.8" fill="currentColor" stroke="none"/></svg>
+    </button>
+    <button class="mb" id="btn-spot" type="button" aria-label="Search everything">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <kbd class="hide-m">Ctrl K</kbd>
+    </button>
+    <span class="mb" id="clock"><span class="lbl" id="clock-t"></span></span>
+  </div>
+
+  <div id="pop" role="dialog"></div>
+  <div id="desk"></div>
+  <nav id="dock" aria-label="Apps"></nav>
+  <div id="toast" role="status"></div>
+
+  <div id="spot" role="dialog" aria-label="Search">
+    <div class="spbox">
+      <input id="spin" type="text" placeholder="Search" autocomplete="off" spellcheck="false" aria-label="Search">
+      <div class="sp-res" id="spres"></div>
+      <div class="sp-hint">Enter to open · Esc to close</div>
+    </div>
+  </div>
+</div>
+
+<main id="fallback">
+  <h2>{{ site.author }}</h2>
   <p class="role">{{ site.role }}</p>
-
-  <div class="statement">
-    <p>I reverse-engineer things until I find the assumption that was never questioned. Professionally, that means security research. Outside that, it means building systems from scratch to understand why they work, not just that they do.</p>
-    <p>I founded FPS Zero (First Principle Synthesis) as a framework for exactly that: approaching problems in cybersecurity, quantum systems, and cognitive science without borrowing conclusions from adjacent fields prematurely. The goal is to find where the map of one domain becomes the map of all the others.</p>
-    <p>The esoteric interests are not decoration. Consciousness, information theory, and adversarial systems are asking the same questions from different angles. I take that seriously.</p>
-  </div>
-
-  <div class="now">
-    <p class="caps">At the desk</p>
-    <p>To hear the symphony of the universe and play it back</p>
-  </div>
-
-  <p class="find">Elsewhere:
-    {%- for p in site.profiles %}
-    <span><a href="{{ p.url }}" target="_blank" rel="noopener noreferrer external">{{ p.label }}</a>{% if not loop.last %},{% endif %}</span>
+  {% for p in about.statement %}<p>{{ p | inlineLinks | safe }}</p>{% endfor %}
+  <h2>Writing</h2>
+  <ul>
+    {%- for a in collections.articles %}
+    <li><a href="{{ a.url }}">{{ a.data.title }}</a> <span>{{ a.date | readableDate }}</span></li>
+    {%- endfor %}
+  </ul>
+  <h2>Workshop</h2>
+  <ul>
+    {%- for p in projects %}
+    <li>{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener noreferrer external">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}: {{ p.blurb }}</li>
+    {%- endfor %}
+  </ul>
+  <h2>Contact</h2>
+  <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  <p>Elsewhere:
+    {%- for p in site.elsewhere %}
+    <a href="{{ p.url }}" target="_blank" rel="noopener noreferrer external">{{ p.label }}</a>{% if not loop.last %},{% endif %}
     {%- endfor %}
   </p>
-  </div>
+</main>
 
-  <div class="right-rail">
-    {% include "bookcase.njk" %}
-    {% include "constellation.njk" %}
-  </div>
- </div>
-</section>
-
+<script type="application/json" id="os-data">{{ collections.articles | osBundle | safe }}</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": {{ site.name | dump | safe }},
-  "alternateName": {{ site.author | dump | safe }},
+  "alternateName": {{ site.brand | dump | safe }},
   "url": {{ site.url | dump | safe }},
   "jobTitle": "Security researcher",
   "sameAs": [

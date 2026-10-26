@@ -1,36 +1,43 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="article">
-  <h1>{{ title }}</h1>
-
-  <p class="byline">
-    {{ author or site.author }} &middot;
-    <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
-    {%- if category %} &middot; {% for sh in shelves %}<a href="/{{ sh }}/">{{ sh }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
-  </p>
-
-  {% if source_url and source != "original" %}
-  <p class="origin">First published in
-     <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer external">{{ source_url | originLabel(source) }}</a>.
-     This is the author's own copy.</p>
-  {% endif %}
-
-  <div class="prose">
-    {{ content | safe }}
-  </div>
-
-  <div class="article-foot">
-    {% if tags | length %}
-    <ul class="tags" aria-label="Subjects">
-      {%- for t in tags %}
-      <li><a href="/tag/{{ t }}/">{{ t }}</a></li>
-      {%- endfor %}
-    </ul>
-    {% endif %}
-    <p class="byline stack-sm">
-      Written by {{ site.author }}.
-      {% for sh in shelves %}<a href="/{{ sh }}/">More on the {{ sh }} shelf</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}
+<div id="wall" aria-hidden="true"></div>
+<header class="topbar">
+  <a class="tb-logo" href="/" aria-label="{{ site.brand }}: open the desktop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M6.8 17.2 17.2 6.8"/></svg>
+    <span>{{ site.brand }}</span>
+  </a>
+  <a class="tb-open" href="/#writing/{{ page.fileSlug }}">Open on the desktop</a>
+</header>
+<main id="main" class="sheet">
+  <article class="article">
+    <p class="kicker">
+      <time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+      {%- if category %} &middot; {% for sh in shelves %}<a href="/#shelf/{{ sh }}">{{ sh }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
     </p>
-  </div>
-</article>
+    <h1>{{ title }}</h1>
+    <p class="byline">{{ author or site.author }}</p>
+
+    {% if source_url and source != "original" %}
+    <p class="origin">First published in
+       <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer external">{{ source_url | originLabel(source) }}</a>.
+       This is the author's own copy.</p>
+    {% endif %}
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    <div class="article-foot">
+      {% if tags | length %}
+      <ul class="tags" aria-label="Subjects">
+        {%- for t in tags %}
+        <li><a href="/#tag/{{ t }}">{{ t }}</a></li>
+        {%- endfor %}
+      </ul>
+      {% endif %}
+      <p class="mark">{{ shelfMark }}</p>
+      <p class="rights">Written by {{ site.author }}. Writing &copy; {{ site.name }}, all rights reserved.</p>
+    </div>
+  </article>
+</main>

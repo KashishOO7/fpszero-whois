@@ -13,8 +13,7 @@ const projects = [
     detail: {
       kicker: "The lab's front door",
       lede:
-        "A research lab and personal site that runs entirely in the browser. Its " +
-        "README opens with Feynman: “What I cannot create, I do not understand.”",
+        "A research lab and personal site that runs entirely in the browser.",
       sections: [
         {
           heading: "The moon",
@@ -73,63 +72,103 @@ const projects = [
     url: "https://spectra.fpszero.com",
     stamps: ["open-source", "no-account", "in-browser"],
     blurb:
-      "A free safety checklist for your accounts, devices, location and the " +
-      "people who might come after them. Say what worries you and 45 steps " +
-      "reorder around it.",
+      "A free security playbook: guided steps for your accounts, money, devices " +
+      "and privacy, so you know what to do first, before something goes wrong " +
+      "and right after it does.",
     detail: {
-      kicker: "A free safety checklist, online and offline",
+      kicker: "A free security playbook",
       lede:
-        "Most security advice is a hundred-item wall. Spectra asks what you are " +
-        "worried about, then hands you a short list, one step at a time, each " +
-        "with a primary source.",
+        "Guided steps for your accounts, money, devices and privacy, so you know " +
+        "what to do first, before something goes wrong and right after it does.",
       sections: [
         {
-          heading: "What you say changes what comes first",
+          heading: "Why I built it",
           body: [
-            "Tapping the harms, or answering five yes-or-no questions, is all the " +
-              "setup there is, and everything works for someone who taps nothing " +
-              "at all.",
-            "The reordering is measured rather than asserted. Of the 22 single " +
-              "answers a reader can give, 16 change the first step, and 8 " +
-              "different steps come first.",
-            "Underneath sit four layers: who you are, the 10 things that can " +
-              "happen, the 17 ways they happen, and the 45 steps you can take.",
+            "I once got the chance to run an on-site security audit for a client. " +
+              "Nothing goes as planned. You can be an experienced auditor with a " +
+              "well-defined scope and a carefully crafted way of working, and " +
+              "reality is still relative. You iterate on the spot, you uncover the " +
+              "blind spots, and above all you are the best at what you do. Voilà, " +
+              "audit done.",
+            "But what about the vulnerabilities we carry with us all the time? " +
+              "Unlike our clients, we have no auditors reviewing our own lives. " +
+              "Nobody scopes our digital footprint, flags our physical habits or " +
+              "points out our blind spots. We have to own our privacy posture, " +
+              "digital or physical, and keep it secure.",
+            "And here is the thing. From clicking a random link to filling out a " +
+              "survey form outside a mall, we tend to run weak, not at the " +
+              "security level but at the emotional one.",
+            "TARS said it best: “Absolute honesty isn’t always the most " +
+              "diplomatic, or the safest form of communication with emotional " +
+              "beings.” We are not purely rational, and attackers know that. To " +
+              "protect ourselves, we first have to understand how we respond " +
+              "emotionally when things feel urgent.",
           ],
         },
         {
-          heading: "Say it in your own words",
+          heading: "Where it came from",
           body: [
-            "Type what is happening, in a plain sentence, and the step that covers " +
-              "it comes first. Below its threshold Spectra says it does not cover " +
-              "that, and stops, rather than handing you the nearest thing on the " +
-              "shelf. No model, no download, nothing generated.",
-            "For a reader already in trouble there are five incident paths, " +
-              "reachable from every page, because that reader cannot start with a " +
-              "checklist.",
+            "Spectra began as a Notion template. Friends and relatives kept " +
+              "coming to me with the same problems: a phishing link they had " +
+              "clicked, a social media account taken over, someone stalking them. " +
+              "I could not help everyone, so I built Spectra for people to learn " +
+              "the everyday habits that look after their accounts, devices and " +
+              "personal details, under the FPSZERO ecosystem.",
+            "If any of this resonates with you, I would love for you to try it " +
+              "and tell me what you think. Honest thoughts, rough edges, ideas, " +
+              "all of it. I am the sole maintainer and this is very much a living " +
+              "project.",
+          ],
+        },
+        {
+          heading: "What you say changes what comes first",
+          body: [
+            "Someone worried about a partner, someone worried about scams and " +
+              "someone worried about data brokers get different priorities out of " +
+              "the same steps, because the order follows what the reader says is " +
+              "going on. Of the 22 single answers a reader can give, 16 change the " +
+              "first step, and 8 different steps come first.",
+            "Tapping the harms, or answering five yes-or-no questions, is all the " +
+              "setup there is, and everything works for someone who taps nothing " +
+              "at all. You can also type “my ex knows where I am”, and the step " +
+              "that covers it comes first. Below its threshold Spectra says it " +
+              "does not cover that, and stops, instead of handing you the closest " +
+              "thing on the shelf. No model, no download, nothing generated.",
+            "Get help has six guides for the reader already in trouble, from a " +
+              "hacked account to having just paid a scammer. There is also a " +
+              "42-question FAQ, a timeline of what you finished and when, and a " +
+              "printable checklist through the browser's own Save as PDF.",
           ],
         },
         {
           heading: "Yours, and it stays yours",
           body: [
-            "Your answers live in IndexedDB on your own device. The page ships " +
-              "connect-src 'self', so the browser itself forbids the app from " +
-              "contacting anything else.",
-            "Your setup travels as seven characters, or as a link or QR code. All " +
-              "of them ride in the URL fragment, which browsers never transmit, so " +
-              "nothing reaches a server. The code is a fixed width, so its length " +
-              "cannot leak how far through the list you are, and it carries a " +
-              "checksum, so a mis-heard character is refused rather than quietly " +
-              "loading someone else's setup.",
-            "A timeline keeps what you finished and when, and /playbook turns the " +
-              "list into paper with tick boxes through the browser's own Save as " +
-              "PDF, with no PDF library to download.",
+            "Everything runs in the browser. Your state lives in IndexedDB on your " +
+              "own device and never leaves it, and the page ships connect-src " +
+              "'self', so the browser itself forbids the app from contacting " +
+              "anything. Nobody pays to appear in Spectra, and it never tells you " +
+              "to buy or install a named product.",
+            "Your setup moves to another device as seven characters, or as a link " +
+              "or QR code. Both ride in the URL fragment, which browsers never " +
+              "transmit, so the server never receives either.",
+          ],
+        },
+        {
+          heading: "What it is, and is not",
+          body: [
+            "Spectra is a prioritisation engine, not a calibrated risk calculator. " +
+              "The weights are judgement, set against a written rubric, not " +
+              "measured from data. It is educational information, not " +
+              "professional advice. It is not accepting contributions yet: the " +
+              "content is being rewritten.",
           ],
         },
       ],
       facts: [
-        "45 steps, 10 harms, 17 attack vectors",
-        "26 validators: every step carries a primary source",
-        "SvelteKit 2, a static app on GitHub Pages",
+        "60 steps, 10 harms, 17 attack vectors",
+        "27 blocking validators run on the content, and every step needs a primary source",
+        "No accounts, no server, no analytics",
+        "SvelteKit 2, Svelte 4, TypeScript and Tailwind, built to GitHub Pages as a PWA",
         "Code AGPL-3.0-only, content CC BY-SA 4.0",
       ],
       links: [
