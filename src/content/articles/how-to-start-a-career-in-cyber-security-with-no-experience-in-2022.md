@@ -1,6 +1,6 @@
 ---
 title: "How to start a career in Cyber Security with no experience in 2022."
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2022-02-14
 source: medium
 source_url: "https://medium.com/@kashi.sh/how-to-start-a-career-in-cyber-security-with-no-experience-in-2022-bccb6b143b25"

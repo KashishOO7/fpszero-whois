@@ -1,6 +1,6 @@
 ---
 title: "The last lost soul on earth"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-09-26
 source: medium
 source_url: "https://medium.com/@Kashish101/the-lost-soul-on-earth-d648fd45f448"

@@ -1,6 +1,6 @@
 ---
 title: "Shower thoughts that were not in shower 🚿"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2024-03-12
 source: substack
 source_url: "https://kashish101.substack.com/p/shower-thoughts-that-were-not-in"

@@ -1,6 +1,6 @@
 ---
 title: "Your Attack Surface Is Not What You Think It Is"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2026-03-24
 source: substack
 source_url: "https://fpszero.substack.com/p/your-attack-surface-is-not-what-you"

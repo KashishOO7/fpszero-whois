@@ -1,6 +1,6 @@
 ---
 title: "Become a Cyber Security Researcher for free and earn a living (2023 Edition)"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-04-06
 source: medium
 source_url: "https://medium.com/@kashi.sh/become-a-cyber-security-researcher-for-free-and-earn-a-living-2023-edition-46ad8e00bdd2"

@@ -1,6 +1,6 @@
 ---
 title: "My eBook \"The Absurdity of Existence\""
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-10-11
 source: substack
 source_url: "https://kashish101.substack.com/p/the-behind-story-of-my-ebook-the"

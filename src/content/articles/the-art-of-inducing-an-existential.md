@@ -1,6 +1,6 @@
 ---
 title: "The Art of Inducing an Existential Crisis on Demand"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2026-03-26
 source: substack
 source_url: "https://kashish101.substack.com/p/the-art-of-inducing-an-existential"

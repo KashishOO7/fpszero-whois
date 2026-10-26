@@ -1,9 +1,9 @@
 ---
 title: "The most stupid ways to get hacked."
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2022-10-02
 source: medium
-source_url: "https://medium.com/@kashishcharaya/are-files-from-your-computer-ever-permanently-deleted-or-where-do-they-go-466eeb6ba65f"
+source_url: "https://medium.com/@kashi.sh/the-most-stupid-ways-to-get-hacked-3fa76967b1cc"
 
 category: security
 tags: [social-engineering, attack-surface, threat-modelling]

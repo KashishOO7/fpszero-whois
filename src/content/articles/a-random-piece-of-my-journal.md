@@ -1,6 +1,6 @@
 ---
 title: "A random piece of my journal"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-02-20
 source: substack
 source_url: "https://kashish101.substack.com/p/a-random-piece-of-my-journal"

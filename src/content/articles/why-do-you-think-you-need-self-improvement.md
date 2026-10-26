@@ -1,6 +1,6 @@
 ---
 title: "Why do you think you need self-improvement?"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2024-02-06
 source: substack
 source_url: "https://kashish101.substack.com/p/why-do-you-think-you-need-self-improvement"

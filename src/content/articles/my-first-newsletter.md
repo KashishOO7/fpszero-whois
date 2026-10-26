@@ -1,6 +1,6 @@
 ---
 title: "My first newsletter"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-01-13
 source: substack
 source_url: "https://kashish101.substack.com/p/my-first-newsletter"

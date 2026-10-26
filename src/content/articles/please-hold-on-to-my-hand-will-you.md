@@ -1,6 +1,6 @@
 ---
 title: "Hold on to my hand, will you?"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-05-04
 source: substack
 source_url: "https://kashish101.substack.com/p/please-hold-on-to-my-hand-will-you"

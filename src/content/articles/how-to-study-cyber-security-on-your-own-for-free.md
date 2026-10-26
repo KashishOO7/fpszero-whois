@@ -1,6 +1,6 @@
 ---
 title: "How to study Cyber Security on your own for free?"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2022-07-13
 source: medium
 source_url: "https://medium.com/@kashi.sh/how-to-study-cyber-security-on-your-own-for-free-a4f894dad919"

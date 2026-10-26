@@ -1,9 +1,9 @@
 ---
 title: "Ways to stay safe and anonymous on the internet. (Best practices)"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2022-07-26
 source: medium
-source_url: "https://medium.com/@kashishcharaya/how-a-password-manager-works-and-lets-create-one-in-python-language-2fd6d1bd6955"
+source_url: "https://medium.com/@kashi.sh/ways-to-stay-safe-and-anonymous-on-the-internet-best-practices-928beafda4f"
 
 category: security
 tags: [privacy, passwords]

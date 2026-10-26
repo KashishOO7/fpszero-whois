@@ -1,6 +1,6 @@
 ---
 title: "The Absurdity of Existence — Part 1"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-09-23
 source: medium
 source_url: "https://medium.com/@Kashish101/the-absurdity-of-existence-49e91afd7f6"

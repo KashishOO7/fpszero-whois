@@ -1,9 +1,9 @@
 ---
 title: "The Absurdity of Existence — Part 2"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-10-11
 source: medium
-source_url: "https://medium.com/@charayakashish/the-absurdity-of-existence-49e91afd7f6"
+source_url: "https://medium.com/@Kashish101/the-absurdity-of-existence-part-2-8b3558e062e7"
 
 category: philosophy
 tags: [absurdism, impermanence]

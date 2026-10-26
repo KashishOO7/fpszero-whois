@@ -1,6 +1,6 @@
 ---
 title: "Are files from your computer ever permanently deleted or where do they go?"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2022-02-24
 source: medium
 source_url: "https://medium.com/@kashi.sh/are-files-from-your-computer-ever-permanently-deleted-or-where-do-they-go-466eeb6ba65f"

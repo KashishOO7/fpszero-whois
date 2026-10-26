@@ -1,6 +1,6 @@
 ---
 title: "How to stay miserable and not get ahead in your career or even get started at all?"
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2023-05-18
 source: substack
 source_url: "https://kashish101.substack.com/p/how-to-stay-miserable-and-not-get"

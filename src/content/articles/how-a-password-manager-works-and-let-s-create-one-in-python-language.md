@@ -1,6 +1,6 @@
 ---
 title: "How a password manager works and let’s create one in python language."
-author: "Kashish Charaya (FPSZERO)"
+author: "Kashish Charaya (FPSZER∅)"
 date: 2022-04-08
 source: medium
 source_url: "https://medium.com/@kashi.sh/how-a-password-manager-works-and-lets-create-one-in-python-language-2fd6d1bd6955"
